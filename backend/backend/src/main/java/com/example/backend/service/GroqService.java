@@ -18,30 +18,7 @@ public class GroqService {
             new RestTemplate();
 
     @SuppressWarnings("rawtypes")
-    public String analyzeResume(
-            String resumeText,
-            String jobDescription) {
-
-        String prompt = """
-                You are an ATS Resume Analyzer.
-
-                Compare the resume against the job description.
-
-                Resume:
-                %s
-
-                Job Description:
-                %s
-
-                Provide:
-
-                1. Match Score (0-100)
-                2. Strengths
-                3. Missing Skills
-                4. Resume Improvements
-                5. 10 Interview Questions
-                """
-                .formatted(resumeText, jobDescription);
+    public String askAI(String prompt) {
 
         String url =
                 "https://api.groq.com/openai/v1/chat/completions";
