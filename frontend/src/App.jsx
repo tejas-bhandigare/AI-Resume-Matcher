@@ -36,53 +36,149 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>AI Resume Matcher</h1>
+    
+ <div
+  style={{
+    width: "100%",
+    minHeight: "100vh",
+      backgroundColor: "#f3f4f6",
+      fontFamily: "Arial, sans-serif",
+    }}
+  >
+    {/* Navbar */}
+    <div
+      style={{
+        background: "#ffffff",
+        padding: "10px 40px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+      }}
+    >
+      <h1 style={{ color: "#6d28d9" }}>
+        🤖 AI Resume Matcher
+      </h1>
 
-      <h3>Upload Resume</h3>
-
-      <input
-        type="file"
-        accept=".pdf"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
-
-      <br />
-      <br />
-
-      <h3>Paste Job Description</h3>
-
-      <textarea
-        rows="12"
-        cols="80"
-        placeholder="Paste Job Description Here..."
-        value={jobDescription}
-        onChange={(e) => setJobDescription(e.target.value)}
-      />
-
-      <br />
-      <br />
-
-      <button onClick={handleAnalyze}>
-        Analyze Resume
-      </button>
-
-      <br />
-      <br />
-
-      <h2>Analysis Result</h2>
-
-      <pre
+      <button
         style={{
-          whiteSpace: "pre-wrap",
-          border: "1px solid #ccc",
-          padding: "10px",
+          background: "#6d28d9",
+          color: "white",
+          border: "none",
+          padding: "10px 20px",
+          borderRadius: "8px",
         }}
       >
-        {response}
-      </pre>
+        Analyze
+      </button>
     </div>
-  );
-}
 
+    {/* Main Layout */}
+    <div
+      style={{
+        display: "grid",
+        // gridTemplateColumns: "30% 70%",
+        gridTemplateColumns: "350px 1fr",
+        gap: "20px",
+        padding: "20px",
+      }}
+    >
+      {/* Left Panel */}
+      <div
+        style={{
+          background: "white",
+          padding: "20px",
+          borderRadius: "15px",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h2>Upload Resume</h2>
+
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+
+        <br />
+        <br />
+
+        <h2>Job Description</h2>
+
+        <textarea
+          rows="12"
+          placeholder="Paste Job Description Here..."
+          value={jobDescription}
+          onChange={(e) => setJobDescription(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "10px",
+            borderRadius: "10px",
+          }}
+        />
+
+        <br />
+        <br />
+
+        <button
+          onClick={handleAnalyze}
+          style={{
+            width: "100%",
+            background: "#6d28d9",
+            color: "white",
+            border: "none",
+            padding: "12px",
+            borderRadius: "10px",
+            cursor: "pointer",
+          }}
+        >
+          Analyze Resume
+        </button>
+      </div>
+
+      {/* Dashboard */}
+      <div
+        style={{
+          background: "white",
+          padding: "20px",
+          borderRadius: "15px",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h2>Analysis Dashboard</h2>
+
+        <div
+          style={{
+            minHeight: "500px",
+            border: "2px dashed #d1d5db",
+            borderRadius: "10px",
+            padding: "20px",
+            marginTop: "20px",
+          }}
+        >
+          {response ? (
+            <pre
+              style={{
+                whiteSpace: "pre-wrap",
+              }}
+            >
+              {response}
+            </pre>
+          ) : (
+            <p
+              style={{
+                color: "#6b7280",
+                textAlign: "center",
+                marginTop: "200px",
+              }}
+            >
+              Analysis Results Will Appear Here
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+}
 export default App;
