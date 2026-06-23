@@ -7,6 +7,9 @@ import "react-circular-progressbar/dist/styles.css";
 
 function AnalysisOverview({ response }) {
 
+  console.log("AnalysisOverview Response");
+console.log(response);
+
   const score = response?.matchScore || 0;
 
   const level =

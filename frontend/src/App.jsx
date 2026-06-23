@@ -44,6 +44,7 @@ function App() {
 
       console.log("Parsed Response:");
       console.log(parsedResponse);
+      console.log(typeof parsedResponse);
 
       setResponse(parsedResponse);
 
