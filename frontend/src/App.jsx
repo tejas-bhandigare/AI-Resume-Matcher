@@ -27,11 +27,10 @@ function App() {
     formData.append("jobDescription", jobDescription);
 
     try {
-      const res = await axios.post(
-        
-        "https://ai-resume-matcher-1-vqj6.onrender.com",
-        formData
-      );
+      await axios.post(
+  "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
+  formData
+);
 
       // setResponse(JSON.parse(res.data));
       console.log("Response:");
