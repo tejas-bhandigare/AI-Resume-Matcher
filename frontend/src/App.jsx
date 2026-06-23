@@ -27,7 +27,7 @@ function App() {
     formData.append("jobDescription", jobDescription);
 
     try {
-      await axios.post(
+    const res = await axios.post(
   "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
   formData
 );
