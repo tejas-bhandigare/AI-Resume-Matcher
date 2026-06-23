@@ -109,25 +109,34 @@ console.log(response);
           }}
         >
           <h3
-            style={{
-              color: "#6b7280",
-              marginBottom: "10px",
-            }}
-          >
-            Candidate Level
-          </h3>
+  style={{
+    color: "#6b7280",
+    marginBottom: "10px",
+  }}
+>
+  👨‍💻 Candidate Level
+</h3>
 
-          <h2
-            style={{
-              color: "#2563eb",
-            }}
-          >
-            {/* Junior */}
-            {/* {level} */}
-            {response?.candidateLevel}
-          </h2>
+<h2
+  style={{
+    color: "#2563eb",
+    fontSize: "30px",
+    fontWeight: "700",
+    marginBottom: "8px",
+  }}
+>
+  {response?.candidateLevel}
+</h2>
 
-          <p>Java Developer</p>
+<p
+  style={{
+    color: "#64748b",
+    fontSize: "14px",
+  }}
+>
+  AI Evaluated Experience Level
+</p>
+
         </div>
 
         {/* Recommendation */}
