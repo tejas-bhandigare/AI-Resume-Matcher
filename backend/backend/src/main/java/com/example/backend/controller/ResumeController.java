@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin(
     origins = {
         "http://localhost:5173",
-        "https://ai-resume-matcher-1-vqj6.onrender.com"
+        "https://ai-resume-matcher-mocha.vercel.app"
     }
 )
 public class ResumeController {
