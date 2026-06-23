@@ -11,44 +11,54 @@ function App() {
   const [response, setResponse] = useState(null);
 
   const handleAnalyze = async () => {
-  if (!file) {
-    alert("Please select a resume");
-    return;
-  }
-
-  if (!jobDescription.trim()) {
-    alert("Please enter a job description");
-    return;
-  }
-
-  const formData = new FormData();
-
-  formData.append("file", file);
-  formData.append("jobDescription", jobDescription);
-
-  try {
-    const res = await axios.post(
-      "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
-      formData
-    );
-
-    console.log("Response:");
-    console.log(res.data);
-
-    setResponse(res.data);
-    // setResponse(parsedResponse)
-
-  } catch (error) {
-    console.log("FULL ERROR");
-    console.log(error);
-
-    if (error.response) {
-      console.log(error.response.data);
+    if (!file) {
+      alert("Please select a resume");
+      return;
     }
 
-    alert("Error analyzing resume");
-  }
-};
+    if (!jobDescription.trim()) {
+      alert("Please enter a job description");
+      return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+    formData.append("jobDescription", jobDescription);
+
+    try {
+      const res = await axios.post(
+        "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
+        formData
+      );
+
+      console.log("Response:");
+      console.log(res.data);
+
+      const cleanedJson = res.data
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .trim();
+
+      const parsedResponse = JSON.parse(cleanedJson);
+
+      console.log("Parsed Response:");
+      console.log(parsedResponse);
+
+      setResponse(parsedResponse);
+
+    } catch (error) {
+      console.log("FULL ERROR");
+      console.log(error);
+
+      if (error.response) {
+        console.log("Response Data:");
+        console.log(error.response.data);
+      }
+
+      alert("Error analyzing resume");
+    }
+  };
 
   return (
     <div
@@ -83,6 +93,99 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+// import { useState } from "react";
+// import axios from "axios";
+
+// import Navbar from "./components/Navbar";
+// import UploadPanel from "./components/UploadPanel";
+// import Dashboard from "./components/Dashboard";
+
+// function App() {
+//   const [file, setFile] = useState(null);
+//   const [jobDescription, setJobDescription] = useState("");
+//   const [response, setResponse] = useState(null);
+
+//   const handleAnalyze = async () => {
+//   if (!file) {
+//     alert("Please select a resume");
+//     return;
+//   }
+
+//   if (!jobDescription.trim()) {
+//     alert("Please enter a job description");
+//     return;
+//   }
+
+//   const formData = new FormData();
+
+//   formData.append("file", file);
+//   formData.append("jobDescription", jobDescription);
+
+//   try {
+//     const res = await axios.post(
+//       "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
+//       formData
+//     );
+
+//     console.log("Response:");
+//     console.log(res.data);
+
+//     setResponse(res.data);
+//     // setResponse(parsedResponse)
+
+//   } catch (error) {
+//     console.log("FULL ERROR");
+//     console.log(error);
+
+//     if (error.response) {
+//       console.log(error.response.data);
+//     }
+
+//     alert("Error analyzing resume");
+//   }
+// };
+
+//   return (
+//     <div
+//       style={{
+//         width: "100%",
+//         minHeight: "100vh",
+//         backgroundColor: "#f3f4f6",
+//       }}
+//     >
+//       <Navbar />
+
+//       <div
+//         style={{
+//           display: "grid",
+//           gridTemplateColumns: "350px 1fr",
+//           gap: "20px",
+//           padding: "20px",
+//         }}
+//       >
+//         <UploadPanel
+//           file={file}
+//           setFile={setFile}
+//           jobDescription={jobDescription}
+//           setJobDescription={setJobDescription}
+//           handleAnalyze={handleAnalyze}
+//         />
+
+//         <Dashboard response={response} />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 
 
