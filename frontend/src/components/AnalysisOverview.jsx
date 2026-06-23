@@ -79,9 +79,11 @@ function AnalysisOverview({ response }) {
       })} */}
 
             <CircularProgressbar
-              value={score}
-              text={`${score}%`}
+              value={response?.matchScore || 0}
+              text={`${response?.matchScore || 0}%`}
             />
+
+
           </div>
 
           <p
@@ -118,7 +120,8 @@ function AnalysisOverview({ response }) {
             }}
           >
             {/* Junior */}
-            {level}
+            {/* {level} */}
+            {response?.candidateLevel}
           </h2>
 
           <p>Java Developer</p>
@@ -140,9 +143,7 @@ function AnalysisOverview({ response }) {
               marginBottom: "10px",
             }}
           >
-            {/* Recommendation */}
-
-            {recommendation}
+            Recommendation
           </h3>
 
           <h2
@@ -150,7 +151,7 @@ function AnalysisOverview({ response }) {
               color: "#16a34a",
             }}
           >
-            Recommended
+            {response?.recommendation}
           </h2>
 
           <p>Suitable for Interview</p>

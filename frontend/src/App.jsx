@@ -11,59 +11,43 @@ function App() {
   const [response, setResponse] = useState(null);
 
   const handleAnalyze = async () => {
-    if (!file) {
-      alert("Please select a resume");
-      return;
-    }
-
-    if (!jobDescription.trim()) {
-      alert("Please enter a job description");
-      return;
-    }
-
-    const formData = new FormData();
-
-    formData.append("file", file);
-    formData.append("jobDescription", jobDescription);
-
-    try {
-    try {
-
-  const res = await axios.post(
-    "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
-    formData
-  );
-
-  console.log("Response:");
-  console.log(res.data);
-  console.log(typeof res.data);
-
-  setResponse(res.data);
-
-} catch (error) {
-
-  console.log("FULL ERROR");
-  console.log(error);
-
-  if (error.response) {
-    console.log("Response Data:");
-    console.log(error.response.data);
+  if (!file) {
+    alert("Please select a resume");
+    return;
   }
 
-  alert("Error analyzing resume");
-}
-    } catch (error) {
-  console.log("FULL ERROR");
-  console.log(error);
-
-  if (error.response) {
-    console.log("Response Data:");
-    console.log(error.response.data);
+  if (!jobDescription.trim()) {
+    alert("Please enter a job description");
+    return;
   }
 
-  alert("Error analyzing resume");
-}
-  };
+  const formData = new FormData();
+
+  formData.append("file", file);
+  formData.append("jobDescription", jobDescription);
+
+  try {
+    const res = await axios.post(
+      "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
+      formData
+    );
+
+    console.log("Response:");
+    console.log(res.data);
+
+    setResponse(res.data);
+
+  } catch (error) {
+    console.log("FULL ERROR");
+    console.log(error);
+
+    if (error.response) {
+      console.log(error.response.data);
+    }
+
+    alert("Error analyzing resume");
+  }
+};
 
   return (
     <div
