@@ -11,12 +11,12 @@ function HowItWorks() {
   return (
     <div
       style={{
-        marginTop: "30px",
+        marginTop: "20px",
       }}
     >
       <h3
         style={{
-          marginBottom: "20px",
+          marginBottom: "15px",
           color: "#374151",
         }}
       >
@@ -29,13 +29,13 @@ function HowItWorks() {
           style={{
             display: "flex",
             alignItems: "center",
-            marginBottom: "15px",
+            marginBottom: "5px",
           }}
         >
           <div
             style={{
-              width: "32px",
-              height: "32px",
+              width: "25px",
+              height: "25px",
               borderRadius: "50%",
               background: "#7c3aed",
               color: "white",

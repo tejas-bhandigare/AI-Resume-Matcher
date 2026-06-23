@@ -1,6 +1,7 @@
 import AnalysisOverview from "./AnalysisOverview";
 import SkillsAnalysis from "./SkillsAnalysis";
 import InterviewQuestions from "./InterviewQuestions";
+import EmptyDashboard from "./EmptyDashboard";
 
 function Dashboard({ response }) {
   return (
@@ -15,11 +16,21 @@ function Dashboard({ response }) {
     >
       <h2>Analysis Dashboard</h2>
 
-      <AnalysisOverview />
+      {/* <AnalysisOverview />
 
       <SkillsAnalysis />
 
-      <InterviewQuestions />
+      <InterviewQuestions /> */}
+
+{response ? (
+  <>
+    <AnalysisOverview response={response} />
+    <SkillsAnalysis response={response} />
+    <InterviewQuestions response={response} />
+  </>
+) : (
+  <EmptyDashboard />
+)}
     </div>
   );
 }

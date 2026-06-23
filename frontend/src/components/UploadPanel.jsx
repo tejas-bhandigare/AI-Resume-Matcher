@@ -11,21 +11,67 @@ function UploadPanel({
     <div
       style={{
         background: "white",
-        padding: "20px",
+        padding: "15px",
         borderRadius: "15px",
         boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
       }}
     >
       <h2>Upload Resume</h2>
 
-      <input
+      {/* <input
         type="file"
         accept=".pdf"
         onChange={(e) => setFile(e.target.files[0])}
-      />
+      /> */}
 
-      <br />
-      <br />
+      <div
+  style={{
+    background: "#f8fafc",
+    border: "2px dashed #8b5cf6",
+    borderRadius: "12px",
+    padding: "10px",
+    textAlign: "center",
+    marginBottom: "15px",
+  }}
+>
+  <div
+    style={{
+      fontSize: "28px",
+      marginBottom: "5px",
+    }}
+  >
+    📄
+  </div>
+
+  {/* <h3>Upload Resume</h3> */}
+
+  <input
+    type="file"
+    accept=".pdf"
+    onChange={(e) =>
+      setFile(e.target.files[0])
+    }
+  />
+
+  {file && (
+    <div
+      style={{
+        marginTop: "10px",
+        background: "#ecfdf5",
+        padding: "10px",
+        borderRadius: "10px",
+      }}
+    >
+      <p>
+        ✅ {file.name}
+      </p>
+
+      <small>
+        {(file.size / 1024).toFixed(1)} KB
+      </small>
+    </div>
+  )}
+</div>
 
       <h2>Job Description</h2>
 

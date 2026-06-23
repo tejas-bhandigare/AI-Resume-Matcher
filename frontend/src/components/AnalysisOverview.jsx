@@ -5,7 +5,15 @@ import {
 
 import "react-circular-progressbar/dist/styles.css";
 
-function AnalysisOverview() {
+function AnalysisOverview({ response }) {
+
+  const score = response?.matchScore || 0;
+
+  const level =
+    response?.candidateLevel || "N/A";
+
+  const recommendation =
+    response?.recommendation || "N/A";
   return (
     <div
       style={{
@@ -34,33 +42,33 @@ function AnalysisOverview() {
       >
         {/* Match Score */}
 
-{/* Match Score */}
+        {/* Match Score */}
 
-<div
-  style={{
-    textAlign: "center",
-    padding: "20px",
-    borderRadius: "10px",
-    background: "#f8fafc",
-  }}
->
-  <h3
-    style={{
-      color: "#6b7280",
-      marginBottom: "15px",
-    }}
-  >
-    Match Score
-  </h3>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "20px",
+            borderRadius: "10px",
+            background: "#f8fafc",
+          }}
+        >
+          <h3
+            style={{
+              color: "#6b7280",
+              marginBottom: "15px",
+            }}
+          >
+            Match Score
+          </h3>
 
-  <div
-    style={{
-      width: "120px",
-      height: "120px",
-      margin: "0 auto",
-    }}
-  >
-    <CircularProgressbar
+          <div
+            style={{
+              width: "120px",
+              height: "120px",
+              margin: "0 auto",
+            }}
+          >
+            {/* <CircularProgressbar
       value={82}
       text="82%"
       styles={buildStyles({
@@ -68,19 +76,23 @@ function AnalysisOverview() {
         textColor: "#16a34a",
         trailColor: "#e5e7eb",
         textSize: "16px",
-      })}
-    />
-  </div>
+      })} */}
 
-  <p
-    style={{
-      marginTop: "15px",
-      fontWeight: "bold",
-    }}
-  >
-    Good Match
-  </p>
-</div>
+            <CircularProgressbar
+              value={score}
+              text={`${score}%`}
+            />
+          </div>
+
+          <p
+            style={{
+              marginTop: "15px",
+              fontWeight: "bold",
+            }}
+          >
+            Good Match
+          </p>
+        </div>
         {/* Candidate Level */}
 
         <div
@@ -105,7 +117,8 @@ function AnalysisOverview() {
               color: "#2563eb",
             }}
           >
-            Junior
+            {/* Junior */}
+            {level}
           </h2>
 
           <p>Java Developer</p>
@@ -127,7 +140,9 @@ function AnalysisOverview() {
               marginBottom: "10px",
             }}
           >
-            Recommendation
+            {/* Recommendation */}
+
+            {recommendation}
           </h3>
 
           <h2

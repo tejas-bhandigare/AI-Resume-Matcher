@@ -8,7 +8,7 @@ import Dashboard from "./components/Dashboard";
 function App() {
   const [file, setFile] = useState(null);
   const [jobDescription, setJobDescription] = useState("");
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState(null);
 
   const handleAnalyze = async () => {
     if (!file) {
@@ -32,11 +32,28 @@ function App() {
         formData
       );
 
-      setResponse(res.data);
+      // setResponse(JSON.parse(res.data));
+      console.log("Response:");
+console.log(res.data);
+console.log(typeof res.data);
+
+const cleanedJson = res.data
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .trim();
+
+setResponse(JSON.parse(cleanedJson));
     } catch (error) {
-      console.error(error);
-      alert("Error analyzing resume");
-    }
+  console.log("FULL ERROR");
+  console.log(error);
+
+  if (error.response) {
+    console.log("Response Data:");
+    console.log(error.response.data);
+  }
+
+  alert("Error analyzing resume");
+}
   };
 
   return (

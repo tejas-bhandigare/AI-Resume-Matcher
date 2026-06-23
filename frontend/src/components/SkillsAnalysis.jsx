@@ -1,24 +1,14 @@
-function SkillsAnalysis() {
-  const strengths = [
-    "Java",
-    "Spring Boot",
-    "React",
-    "REST APIs",
-  ];
+function SkillsAnalysis({ response }) {
 
-  const missingSkills = [
-    "Docker",
-    "AWS",
-    "Kubernetes",
-    "Microservices",
-  ];
+  const strengths =
+    response?.strengths || [];
 
-  const suggestions = [
-    "Learn Docker",
-    "Learn AWS Fundamentals",
-    "Build Cloud-Based Project",
-    "Practice System Design",
-  ];
+  const missingSkills =
+    response?.missingSkills || [];
+
+  const suggestions =
+    response?.suggestions || [];
+ 
 
   return (
     <div

@@ -1,17 +1,9 @@
-function InterviewQuestions() {
+function InterviewQuestions({ response }) {
 
-  const questions = [
-    "What is Dependency Injection?",
-    "Explain Spring Boot Auto Configuration.",
-    "Difference between List and Set?",
-    "What is REST API?",
-    "What is Hibernate?",
-    "What is JPA?",
-    "What is JWT?",
-    "What is Spring Security?",
-    "What is Docker?",
-    "What is Microservice Architecture?"
-  ];
+  const questions =
+    response?.interviewQuestions || [];
+
+  
 
   const leftQuestions = questions.slice(0, 5);
   const rightQuestions = questions.slice(5, 10);
