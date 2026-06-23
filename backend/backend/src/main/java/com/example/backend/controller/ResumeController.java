@@ -9,7 +9,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/resume")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(
+    origins = {
+        "http://localhost:5173",
+        "https://ai-resume-matcher-1-vqj6.onrender.com"
+    }
+)
 public class ResumeController {
 
     private final ResumeParserService parserService;
