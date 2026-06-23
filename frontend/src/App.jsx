@@ -27,22 +27,31 @@ function App() {
     formData.append("jobDescription", jobDescription);
 
     try {
-    const res = await axios.post(
-  "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
-  formData
-);
+    try {
 
-      // setResponse(JSON.parse(res.data));
-      console.log("Response:");
-console.log(res.data);
-console.log(typeof res.data);
+  const res = await axios.post(
+    "https://ai-resume-matcher-1-vqj6.onrender.com/api/resume/analyze",
+    formData
+  );
 
-const cleanedJson = res.data
-  .replace(/```json/g, "")
-  .replace(/```/g, "")
-  .trim();
+  console.log("Response:");
+  console.log(res.data);
+  console.log(typeof res.data);
 
-setResponse(JSON.parse(cleanedJson));
+  setResponse(res.data);
+
+} catch (error) {
+
+  console.log("FULL ERROR");
+  console.log(error);
+
+  if (error.response) {
+    console.log("Response Data:");
+    console.log(error.response.data);
+  }
+
+  alert("Error analyzing resume");
+}
     } catch (error) {
   console.log("FULL ERROR");
   console.log(error);
