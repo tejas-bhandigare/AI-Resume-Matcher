@@ -28,8 +28,8 @@ function App() {
 
     try {
       const res = await axios.post(
-        // "http://localhost:8080/api/resume/analyze",
-        https://ai-resume-matcher-1-vqj6.onrender.com,
+        
+        "https://ai-resume-matcher-1-vqj6.onrender.com",
         formData
       );
 
