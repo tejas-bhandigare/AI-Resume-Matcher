@@ -35,7 +35,8 @@ function App() {
     console.log("Response:");
     console.log(res.data);
 
-    setResponse(res.data);
+    // setResponse(res.data);
+    setResponse(parsedResponse)
 
   } catch (error) {
     console.log("FULL ERROR");
